@@ -11,11 +11,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.moviesapp.databinding.ActivityMainBinding
 import com.example.moviesapp.ui.theme.MoviesAppTheme
 
 class MainActivity : ComponentActivity() {
+    lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
 
     }
 }
