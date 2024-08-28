@@ -1,0 +1,17 @@
+[33mcommit c47a3efed48036bd69683fbbb878c938378736f3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: mennaossama <mennaossama51@gmail.com>
+Date:   Tue Aug 27 03:52:21 2024 +0300
+
+    movies app
+
+[33mcommit f1ccf107488d963d83e1e6efc2580a913ca913c6[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Ahmed Kabary <71717647+KaboOA@users.noreply.github.com>
+Date:   Sun Aug 25 21:01:49 2024 +0300
+
+    add binding to main activity
+
+[33mcommit dac37146b95c3a22a3bd367a04be0416a40ea126[m
+Author: Ahmed Kabary <71717647+KaboOA@users.noreply.github.com>
+Date:   Sun Aug 25 20:59:48 2024 +0300
+
+    first commit

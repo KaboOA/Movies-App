@@ -3,4 +3,8 @@
     <string name="Home">Home</string>
     <string name="setting">Settings</string>
     <string name="favorite">Favorite</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="NowShowing">Now Showing</string>
+    <string name="See_more">See more</string>
 </resources>
