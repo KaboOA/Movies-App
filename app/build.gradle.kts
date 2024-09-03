@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("org.jetbrains.kotlin.kapt")
+
 }
 
 android {
@@ -77,23 +78,4 @@ dependencies {
     implementation ("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation ("androidx.navigation:navigation-ui-ktx:$nav_version")
 
-    val lifecycle_version = "2.8.4"
-
-    // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
-
-    // LiveData
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
-
-    // Retrofit for API handling
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
-
-    //moshi
-    implementation ("com.squareup.moshi:moshi:1.15.1")
-    implementation ("com.squareup.moshi:moshi-kotlin:1.15.1")
-    kapt ("com.squareup.moshi:moshi-kotlin-codegen:1.15.1")
-
-    //glide
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
 }
