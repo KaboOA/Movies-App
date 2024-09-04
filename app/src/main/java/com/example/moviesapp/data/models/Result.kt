@@ -1,13 +1,16 @@
 package com.example.moviesapp.data.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.JsonClass
 import java.io.Serializable
 
 @JsonClass(generateAdapter = true)
+@Entity(tableName = "movies")
 data class Result(
     val adult: Boolean,
     val backdrop_path: String,
-    val genre_ids: List<Int>,
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
     val original_language: String,
     val original_title: String,

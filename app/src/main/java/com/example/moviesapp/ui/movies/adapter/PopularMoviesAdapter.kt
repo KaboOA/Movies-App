@@ -11,7 +11,7 @@ import com.example.moviesapp.data.models.Result
 import com.example.moviesapp.databinding.PopularItemBinding
 import com.example.moviesapp.ui.movies.view.MoviesFragment
 
-class PopularMoviesAdapter(val data: List<Result>, val movieClickListener: MoviesFragment) : ListAdapter<Result, PopularMoviesAdapter.MyViewHolder>(
+class PopularMoviesAdapter(val data: List<Result>, val movieClickListener: PopularMovieClickListener) : ListAdapter<Result, PopularMoviesAdapter.MyViewHolder>(
     UserItemDiffCallback()
 ) {
 
@@ -25,8 +25,8 @@ class PopularMoviesAdapter(val data: List<Result>, val movieClickListener: Movie
             }
         }
     }
-    interface MovieClickListener {
-        fun onMovieClicked(movie: Result)
+    interface PopularMovieClickListener {
+        fun onPopularMovieClicked(movie: Result)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -44,7 +44,7 @@ class PopularMoviesAdapter(val data: List<Result>, val movieClickListener: Movie
        holder.itemPopularBinding.movie= data.get(position)
 
         holder.itemPopularBinding.root.setOnClickListener{
-            movieClickListener.onMovieClicked(data.get(position))
+            movieClickListener.onPopularMovieClicked(data.get(position))
         }
     }
 

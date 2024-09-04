@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.moviesapp.data.models.Result
 import com.example.moviesapp.databinding.MovieItemBinding
 
-class NowPlayingMoviesAdapter (val data: List<Result>, val movieClickListener: MovieClickListener) : ListAdapter<Result, NowPlayingMoviesAdapter.MyViewHolder>(
+class NowPlayingMoviesAdapter (val data: List<Result>, val movieClickListener: NowPlayingMovieClickListener) : ListAdapter<Result, NowPlayingMoviesAdapter.MyViewHolder>(
     UserItemDiffCallback()
 ) {
 
@@ -23,8 +23,8 @@ class NowPlayingMoviesAdapter (val data: List<Result>, val movieClickListener: M
             }
         }
     }
-    interface MovieClickListener {
-        fun onMovieClicked(movie: Result)
+    interface NowPlayingMovieClickListener {
+        fun onNowPlayingMovieClicked(movie: Result)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -41,7 +41,7 @@ class NowPlayingMoviesAdapter (val data: List<Result>, val movieClickListener: M
             .into(holder.itemMovieBinding.imageView)
         holder.itemMovieBinding.movie= data.get(position)
         holder.itemMovieBinding.root.setOnClickListener{
-            movieClickListener.onMovieClicked(data.get(position))
+            movieClickListener.onNowPlayingMovieClicked(data.get(position))
         }
     }
 
