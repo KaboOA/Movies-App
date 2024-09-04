@@ -10,9 +10,6 @@
         android:icon="@drawable/favorite">
     </item>
 
-    <item android:id="@+id/settingsFragment"
-        android:title="@string/setting"
-        android:icon="@drawable/setting">
-    </item>
+
 
 </menu>

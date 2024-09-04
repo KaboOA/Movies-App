@@ -36,12 +36,13 @@
                 android:padding="10dp"
                 android:text="@{movie.title}"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/ratingText"
                 app:layout_constraintStart_toEndOf="@+id/movieimg"
                 app:layout_constraintTop_toTopOf="@id/movieimg"></TextView>
             <ImageView
+                android:layout_marginStart="5dp"
                 android:id="@+id/star"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,12 +53,13 @@
 
             <TextView
                 android:id="@+id/ratingText"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="6dp"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/black"
                 android:text='@{movie.vote_average +"/10 IMDb"}'
                 app:layout_constraintBottom_toBottomOf="@id/movieimg"
-                app:layout_constraintEnd_toEndOf="@+id/movietitle"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/star" />
 
 

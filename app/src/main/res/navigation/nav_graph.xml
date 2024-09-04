@@ -9,7 +9,13 @@
         android:id="@+id/moviesFragment"
         android:name="com.example.moviesapp.ui.movies.view.MoviesFragment"
         android:label="fragment_movies"
-        tools:layout="@layout/fragment_movies" />
+        tools:layout="@layout/fragment_movies"
+        >
+        <action
+            android:id="@+id/action_moviesFragment_to_moreFragment"
+            app:destination="@id/moreFragment" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/favoritesFragment"
@@ -18,11 +24,13 @@
         tools:layout="@layout/fragment_favorites"/>
 
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.example.moviesapp.SettingsFragment"
-        android:label="SettingsFragment"
-        tools:layout="@layout/fragment_settings"/>
+        android:id="@+id/moreFragment"
+        android:name="com.example.moviesapp.MoreFragment"
+        android:label="fragment_more"
+        tools:layout="@layout/fragment_more" >
 
+    <argument android:name="movie"
+        app:argType="com.example.moviesapp.data.models.Result"></argument>
 
-
+    </fragment>
 </navigation>
