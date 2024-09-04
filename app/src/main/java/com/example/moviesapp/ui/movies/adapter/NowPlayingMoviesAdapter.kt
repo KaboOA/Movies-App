@@ -1,13 +1,17 @@
-package com.example.moviesapp
+package com.example.moviesapp.ui.movies.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.moviesapp.data.models.Result
 import com.example.moviesapp.databinding.MovieItemBinding
 
-class MoviesAdapter (val data: List<MovieModel>,val movieClickListener: MovieClickListener) : ListAdapter<MovieModel, MoviesAdapter.MyViewHolder>(UserItemDiffCallback()) {
+class NowPlayingMoviesAdapter (val data: List<Result>, val movieClickListener: MovieClickListener) : ListAdapter<Result, NowPlayingMoviesAdapter.MyViewHolder>(
+    UserItemDiffCallback()
+) {
 
     class MyViewHolder(val itemMovieBinding: MovieItemBinding) :
         RecyclerView.ViewHolder(itemMovieBinding.root) {
@@ -20,7 +24,7 @@ class MoviesAdapter (val data: List<MovieModel>,val movieClickListener: MovieCli
         }
     }
     interface MovieClickListener {
-        fun onMovieClicked(movie: MovieModel)
+        fun onMovieClicked(movie: Result)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -32,18 +36,21 @@ class MoviesAdapter (val data: List<MovieModel>,val movieClickListener: MovieCli
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        Glide.with(holder.itemView.context)
+            .load("https://image.tmdb.org/t/p/w500" + data.get(position).poster_path)
+            .into(holder.itemMovieBinding.imageView)
         holder.itemMovieBinding.movie= data.get(position)
         holder.itemMovieBinding.root.setOnClickListener{
             movieClickListener.onMovieClicked(data.get(position))
         }
     }
 
-    class UserItemDiffCallback : DiffUtil.ItemCallback<MovieModel>() {
-        override fun areItemsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean {
+    class UserItemDiffCallback : DiffUtil.ItemCallback<Result>() {
+        override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean {
+        override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {
             return oldItem == newItem
         }
 

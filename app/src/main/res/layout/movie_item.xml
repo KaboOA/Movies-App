@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <data>
         <variable
             name="movie"
-            type="com.example.moviesapp.MovieModel" />
+            type="com.example.moviesapp.data.models.Result" />
     </data>
-
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:layout_margin="10dp"
@@ -17,51 +15,48 @@
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="0dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/movieimg"
-                android:layout_width="100dp"
-                android:layout_height="150dp"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:id="@+id/imageView"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"></ImageView>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/movietitle"
-                android:layout_width="wrap_content"
+                android:id="@+id/textView"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="SpiderMAn"
+                android:padding="12dp"
+                android:text="@{movie.original_title}"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/ratingText"
-                app:layout_constraintStart_toEndOf="@+id/movieimg"
-                app:layout_constraintTop_toTopOf="@id/movieimg"></TextView>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
             <ImageView
                 android:id="@+id/star"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:src="@drawable/star"
-                app:layout_constraintStart_toEndOf="@+id/movieimg"
-                app:layout_constraintTop_toTopOf="@+id/ratingText"
-                app:layout_constraintBottom_toBottomOf="@+id/ratingText"/>
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <TextView
                 android:id="@+id/ratingText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="6dp"
-                android:text="9.1/10 IMDb"
-                app:layout_constraintBottom_toBottomOf="@id/movieimg"
-                app:layout_constraintEnd_toEndOf="@+id/movietitle"
-                app:layout_constraintStart_toEndOf="@+id/star" />
-
-
-
+                android:text='@{movie.vote_average +"/10 IMDb"}'
+                app:layout_constraintBottom_toBottomOf="@+id/star"
+                app:layout_constraintStart_toEndOf="@+id/star"
+                app:layout_constraintTop_toTopOf="@+id/star" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

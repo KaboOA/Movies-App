@@ -32,8 +32,9 @@
             android:background="@drawable/rounded_edges"
             android:layout_marginTop="10dp"
             android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:padding="10dp"
+            android:minHeight="20dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
             android:text="@string/See_more"
             android:textAllCaps="false"
             android:textColor="@color/grey"
@@ -45,7 +46,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_showingrmovies"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:scrollbars="horizontal"
@@ -86,7 +87,7 @@
             app:layout_constraintTop_toTopOf="@+id/text2" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_showingmovies"
+            android:id="@+id/rv_popularmovies"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
