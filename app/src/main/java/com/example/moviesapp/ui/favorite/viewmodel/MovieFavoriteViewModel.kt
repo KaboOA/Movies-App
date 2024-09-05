@@ -26,5 +26,4 @@ class MovieFavoriteViewModel(val app: Application) : AndroidViewModel(app) {
             }
         }
     }
-
 }

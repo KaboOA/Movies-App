@@ -1,5 +1,6 @@
 package com.example.moviesapp.ui.details.view
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -25,9 +26,9 @@ class DetailsActivity : AppCompatActivity() {
         viewModel.movies.observe(this) {
             if (it.contains(movie)) {
                 binding.imageButton.setColorFilter(Color.YELLOW)
+
             }
         }
-
         val movieTitle = movie.title
         //intent.getStringExtra("title")
         val movieDes = movie.overview
@@ -40,13 +41,24 @@ class DetailsActivity : AppCompatActivity() {
             .into(binding.imageView)
         binding.title.text = movieTitle
         binding.Description.text = movieDes
-        binding.imageButton.setOnClickListener {
-            viewModel.addMovie(movie)
-        }
+            binding.imageButton.setOnClickListener {
+                viewModel.movies.value?.let { movieList ->
+                    if (movieList.contains(movie)) {
+                        viewModel.deleteMovie(movie)
+                        Snackbar.make(binding.main, "Movie Removed Successfully", Snackbar.LENGTH_LONG)
+                            .show()
+                        binding.imageButton.setColorFilter(Color.GRAY)
 
-        viewModel.addMovie.observe(this) {
-            Snackbar.make(binding.main, "Movie Added Successfully", Snackbar.LENGTH_LONG)
-                .show()
-        }
+
+                    } else {
+                        viewModel.addMovie(movie)
+                        Snackbar.make(binding.main, "Movie Added Successfully", Snackbar.LENGTH_LONG)
+                            .show()
+                        binding.imageButton.setColorFilter(Color.YELLOW)
+                    }
+                }
+            }
     }
+
+
 }

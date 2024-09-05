@@ -41,4 +41,10 @@ class MovieDetailsViewModel (val app: Application) : AndroidViewModel(app) {
             }
 
     }
+    fun deleteMovie(movie: Result) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val movieDao = AppDatabase.DatabaseBuilder.getInstance(app.applicationContext).movieDao()
+            movieDao.deleteMovie(movie)
+        }
+    }
 }

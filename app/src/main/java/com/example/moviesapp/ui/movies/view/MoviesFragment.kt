@@ -6,8 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.runtime.snapshots.Snapshot.Companion.observe
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.example.moviesapp.ui.details.view.DetailsActivity
 import com.example.moviesapp.data.models.Result
 import com.example.moviesapp.databinding.FragmentMoviesBinding
@@ -17,6 +19,8 @@ import com.example.moviesapp.ui.movies.adapter.PopularMoviesAdapter
 
 import com.example.moviesapp.ui.movies.adapter.PopularMoviesAdapter.PopularMovieClickListener
 import com.example.moviesapp.ui.movies.viewmodel.MoviesViewModel
+import com.example.moviesapp.ui.seemore.view.MoreActivity
+import java.io.Serializable
 
 
 class MoviesFragment : Fragment(), NowPlayingMovieClickListener,PopularMovieClickListener {
@@ -33,6 +37,21 @@ class MoviesFragment : Fragment(), NowPlayingMovieClickListener,PopularMovieClic
     ): View? {
         binding = FragmentMoviesBinding.inflate(inflater, container, false)
 
+        binding.seemore1.setOnClickListener {
+            moviesViewModel.nowPlayingMovies.observe(viewLifecycleOwner, Observer {
+                val intent = Intent(context, MoreActivity::class.java)
+            intent.putExtra("NowShowing",it.results as Serializable)
+            startActivity(intent)
+        })
+        }
+
+        binding.seemore2.setOnClickListener {
+            moviesViewModel.popularMovies.observe(viewLifecycleOwner, Observer {
+                val intent = Intent(context, MoreActivity::class.java)
+                intent.putExtra("NowShowing",it.results as Serializable)
+                startActivity(intent)
+            })
+        }
 
 
         moviesViewModel.getNowPlayingMovies()

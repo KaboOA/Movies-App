@@ -1,6 +1,7 @@
 package com.example.moviesapp.ui.favorite.view
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,7 +31,6 @@ class FavoritesFragment : Fragment(), PopularMoviesAdapter.PopularMovieClickList
         movieFavoriteViewModel.movies.observe(viewLifecycleOwner) {
             favoriteAdapter = PopularMoviesAdapter(it, this)
             binding.rvFav.adapter = favoriteAdapter
-
         }
 
         return  binding.root
@@ -41,5 +41,9 @@ class FavoritesFragment : Fragment(), PopularMoviesAdapter.PopularMovieClickList
 
         intent.putExtra("movie_model", movie)
         startActivity(intent)
+    }
+    override fun onResume() {
+        super.onResume()
+        movieFavoriteViewModel.getAllMovies()
     }
 }
